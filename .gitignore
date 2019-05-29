@@ -1,0 +1,8 @@
+## Ignore Eclipse Java Web files
+##
+## Edit by GengShuai
+
+/.settings/
+/build/
+/.classpath
+/.project
