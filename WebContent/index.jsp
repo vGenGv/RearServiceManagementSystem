@@ -8,7 +8,8 @@
 <title>Hello World</title>
 </head>
 <body>
-
+<%String test = session.getAttribute("test").toString();
+  out.print(test);%>
 	<div class="container">
 		<div class="jumbotron">
 			<h1>我的第一个 Bootstrap 页面</h1>
