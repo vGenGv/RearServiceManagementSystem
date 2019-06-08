@@ -15,7 +15,7 @@ import dataBase.sql_data;
 
 /**
  * Servlet implementation class WorkerLogin
- * 维修工人登陆 在session中添加identity、id、name
+ * 缁翠慨宸ヤ汉鐧婚檰 鍦╯ession涓坊鍔爄dentity銆乮d銆乶ame
  */
 @WebServlet("/WorkerLogin")
 public class WorkerLogin extends HttpServlet {
@@ -50,7 +50,7 @@ public class WorkerLogin extends HttpServlet {
 		sql_data db = new sql_data();
 		ResultSet rs = db.executeQuery(sql);
 		if(rs==null){
-			//重定向到登陆 失败页面
+			//閲嶅畾鍚戝埌鐧婚檰 澶辫触椤甸潰
 		}else{
 			try {
 				rs.next();
@@ -63,8 +63,8 @@ public class WorkerLogin extends HttpServlet {
 				response.sendRedirect("index.jsp");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				// 重定向到失败页面
-				System.out.println("登陆出错");
+				// 閲嶅畾鍚戝埌澶辫触椤甸潰
+				System.out.println("鐧婚檰鍑洪敊");
 			}
 		}
 	}

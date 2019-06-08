@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class AdminLogin
- * 这个是网站管理员登陆
+ * 杩欎釜鏄綉绔欑鐞嗗憳鐧婚檰
  */
 @WebServlet("/AdminLogin")
 public class AdminLogin extends HttpServlet {

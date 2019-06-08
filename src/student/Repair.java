@@ -43,13 +43,13 @@ public class Repair extends HttpServlet {
 		//doGet(request, response);
 //		session.setAttribute("test", "change session success");
 //		request.setAttribute(arg0, arg1);
-		//Éú³É±àºÅÓëÈÕÆÚ
+		//ç”Ÿæˆç¼–å·ä¸æ—¥æœŸ
 		String RepairID = getNewEquipmentNo("DCLA");
 		String Date = getDate();
-		//sessionÖĞ»ñÈ¡Ñ§Éú±àºÅ
+		//sessionä¸­è·å–å­¦ç”Ÿç¼–å·
 		HttpSession session=request.getSession();
 		String StudentId= session.getAttribute("id").toString();
-		//´Ójsp±íµ¥ÖĞ»ñÈ¡
+		//ä»jspè¡¨å•ä¸­è·å–
 		String Addr = request.getParameter("addr");
 		String StudentPhone = request.getParameter("DeclraPhone");
 		String Type = request.getParameter("Type");
@@ -57,10 +57,10 @@ public class Repair extends HttpServlet {
 		
 		String sql = "insert into Repair "
 				+ "(RepairID,StudentId,StudentPhone,RepairDate,Addr,Type,BADInformation,ProcessInform) values"
-				+ "('"+RepairID+"','"+StudentId+"','"+StudentPhone+"','"+Date+"','"+Addr+"','"+Type+"','"+BADInformation+"','ÉóºËÖĞ')";
+				+ "('"+RepairID+"','"+StudentId+"','"+StudentPhone+"','"+Date+"','"+Addr+"','"+Type+"','"+BADInformation+"','å®¡æ ¸ä¸­')";
 		sql_data db = new sql_data();
 		db.executeInsert(sql);
-		//Ó¦¸Ãµ¯³ö³É¹¦ÌáÊ¾¿ò
+		//åº”è¯¥å¼¹å‡ºæˆåŠŸæç¤ºæ¡†
 		response.sendRedirect("./TestStudent.jsp");
 	}
 	

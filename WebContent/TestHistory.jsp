@@ -8,9 +8,9 @@
 </head>
 <body>
 <%
-	ArrayList<String> RepairID = (ArrayList)request.getAttribute("RepairID");
-	ArrayList<String> RepairDate = (ArrayList)request.getAttribute("RepairDate");
-	ArrayList<String> ProcessInform = (ArrayList)request.getAttribute("ProcessInform");
+	ArrayList<String> RepairID = (ArrayList<String>)request.getAttribute("RepairID");
+	ArrayList<String> RepairDate = (ArrayList<String>)request.getAttribute("RepairDate");
+	ArrayList<String> ProcessInform = (ArrayList<String>)request.getAttribute("ProcessInform");
 	int lenth = RepairID.size();
 	String id,date,inform;
 %>
