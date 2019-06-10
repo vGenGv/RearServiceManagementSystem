@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,6 +9,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- width:viewport的宽度
+
    width=divice-width:viewport的宽度 
    initial-scale:初始的缩放比例 
    maxmum-scale:允许用户缩放的最大比例
@@ -175,11 +177,11 @@
 	</div>
 
 
+
 	<script src="js/jquery-3.4.1.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/tooltip.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-
 </body>
 </html>
 
