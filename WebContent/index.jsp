@@ -4,34 +4,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link href="css/open-iconic-bootstrap.min.css" rel="stylesheet" />
+<link href="css/bootstrap.min.css" rel="stylesheet" />
 <title>Hello World</title>
 </head>
 <body>
-
-	<div class="container">
-		<div class="jumbotron">
-			<h1>我的第一个 Bootstrap 页面</h1>
-			<p>重置窗口大小，查看响应式效果！</p>
-		</div>
-		<div class="row">
-			<div class="col-sm-4">
-				<h3>第一列</h3>
-				<p>学的不仅是技术，更是梦想！</p>
-				<p>再牛逼的梦想,也抵不住你傻逼似的坚持！</p>
-			</div>
-			<div class="col-sm-4">
-				<h3>第二列</h3>
-				<p>学的不仅是技术，更是梦想！</p>
-				<p>再牛逼的梦想,也抵不住你傻逼似的坚持！</p>
-			</div>
-			<div class="col-sm-4">
-				<h3>第三列</h3>
-				<p>学的不仅是技术，更是梦想！</p>
-				<p>再牛逼的梦想,也抵不住你傻逼似的坚持！</p>
+	<nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+		<a class="navbar-brand oi oi-box" aria-hidden="false" style="font-size:32px" href="#">  后勤服务管理系统</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav">
+				<a class="nav-item nav-link active" href="#">
+					Home <span class="sr-only">(current)</span>
+				</a>
+				<a class="nav-item nav-link" href="#">Features</a>
+				<a class="nav-item nav-link" href="#">Pricing</a>
+				<a class="nav-item nav-link disabled" href="#">Disabled</a>
 			</div>
 		</div>
-	</div>
+	</nav>
 
 	<script src="js/jquery-3.4.1.min.js"></script>
 	<script src="js/popper.min.js"></script>
