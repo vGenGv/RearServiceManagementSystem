@@ -68,7 +68,7 @@ public class LoginServlet extends HttpServlet {
 				String dormitory= rs.getString("StudentDormitory");
 				System.out.println(studentID+name+dormitory);
 				HttpSession session=request.getSession();
-				session.setAttribute("identity", "students");
+				session.setAttribute("identity", "student");
 				session.setAttribute("id", studentID);
 				session.setAttribute("name", name);
 				session.setAttribute("addr", dormitory);

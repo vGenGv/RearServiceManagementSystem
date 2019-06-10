@@ -47,9 +47,6 @@ public class StudentServlet extends HttpServlet {
 		}else if(method.equals("complete")) {
 			//点击完工
 			complete(request,response);
-		}else if(method.equals("complain")) {
-			//投诉
-			complain(request,response);
 		}else {
 			System.out.println("method参数错误");
 		}
@@ -71,6 +68,9 @@ public class StudentServlet extends HttpServlet {
 		}else if(method.equals("comment")) {
 			//评价此次维修
 			comment(request,response);
+		}else if(method.equals("complain")) {
+			//投诉
+			complain(request,response);
 		}else {
 			System.out.println("method参数错误");
 		}
@@ -159,7 +159,16 @@ public class StudentServlet extends HttpServlet {
 		showHistory(request,response);
 	}
 	private void complain(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			
+		String complaintID = CreatID.creatID("C");
+		String RepairID = request.getParameter("RepairID");
+		String complaintPeople = request.getSession().getAttribute("name").toString();
+		String identity = request.getSession().getAttribute("identity").toString();
+		String complaint = request.getParameter("complain");
+		String sql = "insert into complainttable values('"+complaintID+"','"+
+				RepairID+"','"+complaintPeople+"','"+identity+"','"+complaint+"');";
+		sql_data db = new sql_data();
+		db.executeInsert(sql);
+		showHistory(request,response);
 	}
 	
 	private String getDate() {
