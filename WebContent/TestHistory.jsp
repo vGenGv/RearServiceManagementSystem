@@ -24,14 +24,14 @@
 			String comment = Repair.getComment();
 			out.print("<tr><td>"+id+"</td>"+"<td>"+date+"</td>"+"<td>"+processInfo+"</td>");
 			if(processInfo.equals("审核通过")){
-				out.print("<td><a href='CompleteServlet?RepairID="+id+"'>已完工  </a><a href='ComplainServlet?RepairID="+id+"'>投诉</a></td></tr>");
+				out.print("<td><a href='StudentServlet?method=complete&RepairID="+id+"'>已完工  </a><a href='StudentServlet?method=complain&RepairID="+id+"'>投诉</a></td></tr>");
 			}else if(processInfo.equals("审核中")){
-				out.print("<td><a href='WithdrawServlet?RepairID="+id+"'>撤回  </a><a href='ComplainServlet?RepairID="+id+"'>投诉</a></td></tr>");
+				out.print("<td><a href='StudentServlet?method=delete&RepairID="+id+"'>撤回  </a><a href='StudentServlet?method=complain&RepairID="+id+"'>投诉</a></td></tr>");
 			}else if(processInfo.equals("已完工")){
 				if(comment==null){
-					out.print("<td><a href='TestComment.jsp?RepairID="+id+"'>评价  </a><a href='ComplainServlet?RepairID="+id+"'>投诉</a></td></tr>");
+					out.print("<td><a href='TestComment.jsp?RepairID="+id+"'>评价  </a><a href='StudentServlet?method=complain&RepairID="+id+"'>投诉</a></td></tr>");
 				}else{
-					out.print("<td><a href=''>查看评价  </a><a href='ComplainServlet?RepairID="+id+"'>投诉</a></td></tr>");
+					out.print("<td><a href=''>查看评价  </a><a href='StudentServlet?method=complain&RepairID="+id+"'>投诉</a></td></tr>");
 				}
 			}else{out.print("<td><a href='ComplainServlet?RepairID="+id+"'>投诉</a></td></tr>");}
 		}

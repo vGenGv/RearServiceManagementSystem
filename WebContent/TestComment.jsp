@@ -11,7 +11,7 @@
 <%
 String RepairID = request.getParameter("RepairID"); 
 %>
-<form id="comment" name= "comment" method= "post" action="CommentServlet?RepairID=<%=RepairID%>">
+<form id="comment" name= "comment" method= "post" action="StudentServlet?method=comment&RepairID=<%=RepairID%>">
 	评价：<input type="text" name="comment" id="comment"/><br><br>
 	<input type="submit" name="submit" id="submit" value="提交" />
 </form>
