@@ -1,16 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
 </head>
-<%session.setAttribute("test", "this is session"); %>
 <body>
 <table border="1" width="" height="">
 <tr><td>
-	<form id="form1" onsubmit="return check();"name="form1" method="post" action="Repair">
+	<form id="form1" name="form1" method="post" action="StudentServlet?method=repair">
 	<%String value = "";%><br><br>
  	--------报修单-------<br><br>
  	（姓名学号在session中）<br><br>
@@ -28,12 +27,12 @@
     <input type="reset" name="reset" id="reset" value="重置" />
 </form></td>
 
-<td><a href="RepairHistory">---------报修记录---------</a><br><br>
+<td><a href="StudentServlet?method=showHistory">---------报修记录---------</a><br><br>
 </td></tr>
 
 <tr><td>
 	---------维修工登陆---------<br><br>
-	<form id="workerlogin" name="workerlogin" method="post" action="WorkerLogin">
+	<form id="workerlogin" name="workerlogin" method="post" action="LoginServlet?method=workerLogin">
 	账号：<input type="text" name="id" id="id"/><br><br>
 	密码：<input type="text" name="psw" id="psw"/><br><br>
 	<input type="submit" name="submit" id="submit" value="登陆" />
@@ -42,7 +41,7 @@
 
 <td>
 	-------维修管理部门登陆------<br><br>
-	<form id="managerlogin" name="managerlogin" method="post" action="ManagerLogin">
+	<form id="managerlogin" name="managerlogin" method="post" action="LoginServlet?method=managerLogin">
 	账号：<input type="text" name="id" id="id"/><br><br>
 	密码：<input type="text" name="psw" id="psw"/><br><br>
 	<input type="submit" name="submit" id="submit" value="登陆" />
@@ -51,7 +50,7 @@
 
 <tr><td>
 	---------学生登陆---------<br><br>
-	<form id="studentlogin" name="studentlogin" method="post" action="StudentLogin">
+	<form id="studentlogin" name="studentlogin" method="post" action="LoginServlet?method=studentLogin">
 	账号：<input type="text" name="id" id="id"/><br><br>
 	密码：<input type="text" name="psw" id="psw"/><br><br>
 	<input type="submit" name="submit" id="submit" value="登陆" />
