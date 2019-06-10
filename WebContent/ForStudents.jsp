@@ -136,7 +136,7 @@
   </div>
  
   <div class="form-group">
-    <label for="inputAddress2"style="color:red">故障描述</label>
+    <label for="inputAddress2"style="color:red">故障描述*</label>
     <textarea class="form-control" id="FormText" rows="3"></textarea>
   </div>
   <div class="mx-auto bg-grey"style="width:100px">
@@ -148,6 +148,32 @@
       </div>
       </div>
       
+      <!-- 分割线5 -->
+       <div class="container-fluid">
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="row">
+      <div class="col-sm-4" style="background-color:lavender; height:5px"></div>
+      <div class="col-sm-8" style="background-color:#FFB6C1;"></div>
+  </div>
+      </div>
+       <!-- 大字体部分 -->
+<div class="container-fluid">
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron" style="background-color:white; width:device-width;padding:55px;margin: 0;">
+        
+          <h1 style="font-size: 70px;color:#5B5B5B;font-weight: bolder" class="text-center">穷究于理 成就于工</h1>
+                <h2 style="font-size: 30px;color:#5B5B5B;" class="text-center"><br>管理提效益 服务提质量 环境提形象</h2>
+        </div>
+      </div>
+
+<!-- 分割线6 -->
+       <div class="container-fluid">
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="row">
+      <div class="col-sm-8" style="background-color:#FFB6C1;"></div>
+    <div class="col-sm-4" style="background-color:lavender; height:5px"></div>
+  </div>
+      </div>
       <!-- 底部栏 -->
       <div class="container-fluid" style="height:5px">
       <!-- Main component for a primary marketing message or call to action -->
