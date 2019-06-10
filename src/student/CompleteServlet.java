@@ -6,18 +6,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import dataBase.sql_data;
 /**
  * Servlet implementation class Complete
  */
-@WebServlet("/Complete")
-public class Complete extends HttpServlet {
+@WebServlet("/CompleteServlet")
+public class CompleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Complete() {
+    public CompleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +29,11 @@ public class Complete extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String RepairID = request.getParameter("RepairID");		
+		String sql = "update Repair set ProcessInform='已完工' where RepairID='"+RepairID+"';";
+		sql_data db = new sql_data();
+		db.executeUpdate(sql);
+		response.sendRedirect("HistoryServlet");
 	}
 
 	/**
