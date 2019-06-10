@@ -2,6 +2,7 @@ package student;
 
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,18 +12,17 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dataBase.sql_data;
-
 /**
  * Servlet implementation class Repair
  */
-@WebServlet("/Repair")
-public class Repair extends HttpServlet {
+@WebServlet("/RepairServlet")
+public class RepairServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Repair() {
+    public RepairServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,23 +40,30 @@ public class Repair extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//doGet(request, response);
-//		session.setAttribute("test", "change session success");
-//		request.setAttribute(arg0, arg1);
+		
+		//下面三行用来解决中文乱码问题
+		response.setContentType("text/html;charset=utf-8");
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		
 		//生成编号与日期
-		String RepairID = getNewEquipmentNo("DCLA");
+		String RepairID = getNewEquipmentNo();
 		String Date = getDate();
+		
 		//session中获取学生编号
 		HttpSession session=request.getSession();
 		String StudentId= session.getAttribute("id").toString();
 		//从jsp表单中获取
-		String Addr = request.getParameter("addr");
+		String Addr = request.getParameter("Addr");
+		if(Addr == null){
+			Addr=session.getAttribute("addr").toString();
+		}
 		String StudentPhone = request.getParameter("DeclraPhone");
 		String Type = request.getParameter("Type");
 		String BADInformation = request.getParameter("BADInformation");
-		
+		//存入数据库
 		String sql = "insert into Repair "
-				+ "(RepairID,StudentId,StudentPhone,RepairDate,Addr,Type,BADInformation,ProcessInform) values"
+				+ "(RepairID,StudentId,RepairPhone,RepairDate,Addr,Type,BADInformation,ProcessInform) values"
 				+ "('"+RepairID+"','"+StudentId+"','"+StudentPhone+"','"+Date+"','"+Addr+"','"+Type+"','"+BADInformation+"','审核中')";
 		sql_data db = new sql_data();
 		db.executeInsert(sql);
@@ -66,27 +73,22 @@ public class Repair extends HttpServlet {
 	
 	
 	private String getDate() {
-		Calendar c = Calendar.getInstance();
-		int y = c.get(Calendar.YEAR);
-        int m = c.get(Calendar.MONTH);
-        int d = c.get(Calendar.DATE);
-		String date = y+"-"+m+"-"+d;
-		return date;
+		Date date = new Date();
+        String formatDate = String.format("%tF", date);
+		return formatDate;
 	}
 
-	public  String getNewEquipmentNo(String equipmentType){
+	private String getNewEquipmentNo(){
+		//生成13位的维修单编号
         Calendar c = Calendar.getInstance();
-        int year = c.get(Calendar.YEAR);
+        Date date = new Date();
+        String year = String.format("R%ty", date);
         int month = c.get(Calendar.MONTH);
-        int date = c.get(Calendar.DATE);
+        int day = c.get(Calendar.DATE);
         int hour = c.get(Calendar.HOUR_OF_DAY);
         int minute = c.get(Calendar.MINUTE);
-        int second = c.get(Calendar.SECOND);
-        String newEquipmentNo = "0001";
-      /*    int newEquipment = (int)((Math.random()*9+1)*1000);
-            newEquipmentNo = String.format(equipmentType + "%04d", newEquipment);*/
-        int newEquipment=year+month+date+hour+minute+second+(int)((Math.random()*9+1)*100);
-        newEquipmentNo = String.format(equipmentType + "%04d", newEquipment);
+        int random=(int)((Math.random()*9+1)*10);
+        String newEquipmentNo = String.format(year+"%02d%02d%02d%02d%d", month,day,hour,minute,random);
         return newEquipmentNo;
     }
 }
