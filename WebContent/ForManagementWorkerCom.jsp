@@ -103,6 +103,13 @@
 </nav>
       </div>
       <div class="col-sm-10 bg-grey" >
+      <table class="table">
+  <thead>
+    <tr>
+      <th scope="col"><h4>维修工人问题上报</h4> <!-- 这里不要改成h4，否则会把接下来的图片放到第二行 --></th>
+    </tr>
+  </thead>
+  </table>
                  <ul class="list-group">
                  <li class="list-group-item">
                  <div class="media">
