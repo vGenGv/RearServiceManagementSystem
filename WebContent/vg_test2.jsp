@@ -24,9 +24,7 @@
 		<div class="container">
 			<!-- Brand -->
 			<a class="navbar-brand js-scroll-trigger" href="#page-top">
-				<h2>
-					<img alt="brand" src="img\logo_white.png" style="width: 40x; height: 40px;" id="logo_img" />后勤服务管理系统
-				</h2>
+				<img alt="brand" src="img\logo_white.png" style="width: 40x; height: 40px;" id="logo_img" /><span id="logo_text"> 后勤服务管理系统</span>
 			</a>
 
 			<!-- Toggler -->
@@ -44,8 +42,14 @@
 					<li class="nav-item">
 						<a class="nav-link js-scroll-trigger" href="#news"> 新闻 </a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link js-scroll-trigger" href="#services"> 服务 </a>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> 服务 </a>
+						<div class=" dropdown-menu">
+							<a class="dropdown-item js-scroll-trigger" href="#services">服务总览</a>
+							<a class="dropdown-item js-scroll-trigger" href="#">廉政建设</a>
+							<a class="dropdown-item js-scroll-trigger" href="#">工会及文化建设</a>
+							<a class="dropdown-item js-scroll-trigger" href="#">“两学一做”</a>
+						</div>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link js-scroll-trigger" href="#about"> 关于 </a>
@@ -167,6 +171,116 @@
 		<!-- / .container -->
 	</section>
 
+	<!-- SECTIONS
+    ================================================== -->
+	<!-- PAGES
+    ================================================== -->
+
+	<!-- News
+    ================================================== -->
+	<section class="section bg-dark" id="news">
+		<div class="carousel slide" id="review-slider" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#review-slider" data-slide-to="0" class="active"></li>
+				<li data-target="#review-slider" data-slide-to="1"></li>
+				<li data-target="#review-slider" data-slide-to="2"></li>
+			</ol>
+			<div class="caousel-inner">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-10 m-auto">
+							<div class="carousel-item active text-center test-content">
+								<img src="img/2.jpg" alt="" class="img-fluid ">
+
+								<div class="client-text">
+									<h3>新起点 新征程</h3>
+								</div>
+							</div>
+
+							<div class="carousel-item text-center test-content">
+								<img src="img/3.jpg" alt="" class="img-fluid ">
+
+								<div class="client-text">
+									<h3>拨穗正冠 扬帆起航</h3>
+								</div>
+							</div>
+
+							<div class="carousel-item text-center test-content">
+								<img src="img/4.jpg" alt="" class="img-fluid ">
+
+								<div class="client-text">
+									<h3>定格当下 相伴未来</h3>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- SERVICES
+    ================================================== -->
+	<section class="section" id="services">
+		<div class="container">
+			<div class="row justify-content-center mb-4">
+				<div class="col-md-8 col-lg-6 text-center">
+
+					<!-- Heading -->
+					<h2 class="lg-title mb-2">全面服务</h2>
+
+					<!-- Subheading -->
+					<p class="mb-5 ">多种多样，应有尽有</p>
+
+				</div>
+			</div>
+			<!-- / .row -->
+
+			<div class="row justy-content-center">
+				<div class="col-lg-3 col-md-6">
+					<div class="text-center feature-block">
+						<div class="feature-icon-block mb-4">
+							<i class="oi oi-wrench"></i>
+						</div>
+						<h4 class="mb-3 ">故障报修</h4>
+						<p>Our team are experts in matching you with the right provider.</p>
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-6">
+					<div class="text-center feature-block">
+						<div class="feature-icon-block mb-4">
+							<i class="oi oi-magnifying-glass"></i>
+						</div>
+						<h4 class="mb-3">记录查询</h4>
+						<p>We've been awarded for our high rate of customer satisfaction.</p>
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-6">
+					<div class="text-center feature-block">
+						<div class="feature-icon-block mb-4">
+							<i class="oi oi-browser"></i>
+						</div>
+						<h4 class="mb-3">问题通知</h4>
+						<p>We only compare market leaders with a reputation for quality.</p>
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-6">
+					<div class="text-center feature-block">
+						<div class="feature-icon-block mb-4">
+							<i class="oi oi-pencil"></i>
+						</div>
+						<h4 class="mb-3">反馈留言</h4>
+						<p>We only compare market leaders with a reputation for service.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- / .container -->
+	</section>
+
 	<!-- FOOTER
     ================================================== -->
 	<footer class="top-padding bg-dark">
@@ -178,8 +292,7 @@
 						<!-- Brand -->
 						<a href="#" class="footer-brand text-white"> 后勤服务管理系统 </a>
 						<p>
-							<i class="oi oi-people"></i> 专业的管理团队. <br> <i class="oi oi-graph"></i> 高效的组织机构. <br> <i class="oi oi-clock"></i> 24小时服务.<br>
-							<i class="oi oi-heart"></i> 给您最完美的体验.
+							<i class="oi oi-people"></i> 专业的管理团队. <br> <i class="oi oi-graph"></i> 高效的组织机构. <br> <i class="oi oi-clock"></i> 24小时服务.<br> <i class="oi oi-heart"></i> 给您最完美的体验.
 						</p>
 					</div>
 				</div>
