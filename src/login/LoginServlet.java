@@ -19,56 +19,64 @@ import dataBase.sql_data;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LoginServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
+	public LoginServlet() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String identity = request.getParameter("loginRadios");
-		System.out.print(identity);
-		if(identity.equals("student_option")) {
-			studentLogin(request,response);
-		}else if(identity.equals("admin_option")) {
-			managerLogin(request,response);
-		}else if(identity.equals("worker_option")) {
-			workerLogin(request,response);
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		String method = request.getParameter("method");
+		if (method.equals("studentLogin")) {
+			studentLogin(request, response);
+		} else if (method.equals("managerLogin")) {
+			managerLogin(request, response);
+		} else if (method.equals("workerLogin")) {
+			workerLogin(request, response);
 		}
 	}
-	
-	private void studentLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	private void studentLogin(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String id = null;
 		String pwd = null;
-		id = request.getParameter("loginInputUsername");
-		pwd = request.getParameter("loginInputPassword").trim();
-		String sql = "select * from students where StudentId='"+id+"' and StudentPswd='"+pwd+"'";
+		id = request.getParameter("id");
+		pwd = request.getParameter("psw").trim();
+		System.out.println(id);
+		System.out.println(pwd);
+		String sql = "select * from students where StudentId='" + id + "' and StudentPswd='" + pwd + "'";
 		sql_data db = new sql_data();
 		ResultSet rs = db.executeQuery(sql);
-		if(rs==null){
-			//重定向到登陆 失败页面
-		}else{
+		if (rs == null) {
+			// 重定向到失败页面
+			System.out.println("用户不存在");
+		} else {
 			try {
 				rs.next();
 				String studentID = id;
 				String name = rs.getString("StudentName");
-				String dormitory= rs.getString("StudentDormitory");
-				HttpSession session=request.getSession();
+				String dormitory = rs.getString("StudentDormitory");
+				System.out.println(studentID + name + dormitory);
+				HttpSession session = request.getSession();
 				session.setAttribute("identity", "student");
 				session.setAttribute("id", studentID);
 				session.setAttribute("name", name);
@@ -81,22 +89,24 @@ public class LoginServlet extends HttpServlet {
 			}
 		}
 	}
-	private void managerLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	private void managerLogin(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String id = null;
 		String pwd = null;
-		id = request.getParameter("loginInputUsername");
-		pwd = request.getParameter("loginInputPassword").trim();
-		String sql = "select * from manager where managerID='"+id+"' and managerPswd='"+pwd+"'";
+		id = request.getParameter("id");
+		pwd = request.getParameter("psw").trim();
+		String sql = "select * from manager where managerID='" + id + "' and managerPswd='" + pwd + "'";
 		sql_data db = new sql_data();
 		ResultSet rs = db.executeQuery(sql);
-		if(rs==null){
-			//重定向到登陆 失败页面
-		}else{
+		if (rs == null) {
+			// 重定向到登陆 失败页面
+		} else {
 			try {
 				rs.next();
 				String name = rs.getString("managerName");
-				//System.out.println(id+name);
-				HttpSession session=request.getSession();
+				// System.out.println(id+name);
+				HttpSession session = request.getSession();
 				session.setAttribute("identity", "manager");
 				session.setAttribute("id", id);
 				session.setAttribute("name", name);
@@ -108,21 +118,24 @@ public class LoginServlet extends HttpServlet {
 			}
 		}
 	}
-	private void workerLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	private void workerLogin(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String id = null;
 		String pwd = null;
-		id = request.getParameter("loginInputUsername");
-		pwd = request.getParameter("loginInputPassword").trim();
-		String sql = "select * from worker where workerId='"+id+"' and workerPswd='"+pwd+"'";
+		id = request.getParameter("id");
+		pwd = request.getParameter("psw").trim();
+		String sql = "select * from worker where workerId='" + id + "' and workerPswd='" + pwd + "'";
 		sql_data db = new sql_data();
 		ResultSet rs = db.executeQuery(sql);
-		if(rs==null){
-			//重定向到登陆 失败页面
-		}else{
+		if (rs == null) {
+			// 重定向到登陆 失败页面
+		} else {
 			try {
 				rs.next();
 				String name = rs.getString("workerName");
-				HttpSession session=request.getSession();
+				// System.out.println(id+name);
+				HttpSession session = request.getSession();
 				session.setAttribute("identity", "worker");
 				session.setAttribute("id", id);
 				session.setAttribute("name", name);

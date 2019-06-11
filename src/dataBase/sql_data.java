@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class sql_data {
 	String sDBDriver = "com.mysql.jdbc.Driver";
-	String url = "jdbc:mysql://127.0.0.1:3306/rearservice?useUnicode=true&characterEncoding=UTF-8";
+	String url = "jdbc:mysql://127.0.0.1:3306/rearservice?useUnicode=true&characterEncoding=UTF-8&useSSL=false";
 	String user = "root";
 	String password = "root";
 	Connection conn = null;
