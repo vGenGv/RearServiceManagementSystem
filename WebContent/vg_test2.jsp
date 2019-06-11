@@ -80,12 +80,12 @@
 
 				<!-- modal body -->
 				<div class="modal-body">
-					<form class="needs-validation" novalidate method="post" action="LoginServlet">
+					<form class="needs-validation" novalidate>
 						<!-- Username -->
 						<div class="form-group row justify-content-center">
 							<label for="loginInputUsername" class="col-sm-3 col-form-label">用户名</label>
 							<div class="col-sm-7">
-								<input type="text" class="form-control" id="loginInputUsername" name="loginInputUsername" placeholder="Username" required>
+								<input type="text" class="form-control" id="loginInputUsername" placeholder="Username" required>
 								<div class="invalid-feedback">请输入用户名</div>
 							</div>
 						</div>
@@ -94,7 +94,7 @@
 						<div class="form-group row justify-content-center">
 							<label for="loginInputPassword" class="col-sm-3 col-form-label">密码</label>
 							<div class="col-sm-7">
-								<input type="password" class="form-control" id="loginInputPassword" name="loginInputPassword" placeholder="Password" required>
+								<input type="password" class="form-control" id="loginInputPassword" placeholder="Password" required>
 								<div class="invalid-feedback">请输入密码</div>
 							</div>
 						</div>
