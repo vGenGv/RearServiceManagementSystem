@@ -41,20 +41,22 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String method = request.getParameter("method");
-		if(method.equals("studentLogin")) {
+		String identity = request.getParameter("loginRadios");
+		System.out.print(identity);
+		if(identity.equals("student_option")) {
 			studentLogin(request,response);
-		}else if(method.equals("managerLogin")) {
+		}else if(identity.equals("admin_option")) {
 			managerLogin(request,response);
-		}else if(method.equals("workerLogin")) {
+		}else if(identity.equals("worker_option")) {
 			workerLogin(request,response);
 		}
 	}
+	
 	private void studentLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = null;
 		String pwd = null;
-		id = request.getParameter("id");
-		pwd = request.getParameter("psw").trim();
+		id = request.getParameter("loginInputUsername");
+		pwd = request.getParameter("loginInputPassword").trim();
 		String sql = "select * from students where StudentId='"+id+"' and StudentPswd='"+pwd+"'";
 		sql_data db = new sql_data();
 		ResultSet rs = db.executeQuery(sql);
@@ -66,7 +68,6 @@ public class LoginServlet extends HttpServlet {
 				String studentID = id;
 				String name = rs.getString("StudentName");
 				String dormitory= rs.getString("StudentDormitory");
-				System.out.println(studentID+name+dormitory);
 				HttpSession session=request.getSession();
 				session.setAttribute("identity", "student");
 				session.setAttribute("id", studentID);
@@ -83,8 +84,8 @@ public class LoginServlet extends HttpServlet {
 	private void managerLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = null;
 		String pwd = null;
-		id = request.getParameter("id");
-		pwd = request.getParameter("psw").trim();
+		id = request.getParameter("loginInputUsername");
+		pwd = request.getParameter("loginInputPassword").trim();
 		String sql = "select * from manager where managerID='"+id+"' and managerPswd='"+pwd+"'";
 		sql_data db = new sql_data();
 		ResultSet rs = db.executeQuery(sql);
@@ -110,8 +111,8 @@ public class LoginServlet extends HttpServlet {
 	private void workerLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = null;
 		String pwd = null;
-		id = request.getParameter("id");
-		pwd = request.getParameter("psw").trim();
+		id = request.getParameter("loginInputUsername");
+		pwd = request.getParameter("loginInputPassword").trim();
 		String sql = "select * from worker where workerId='"+id+"' and workerPswd='"+pwd+"'";
 		sql_data db = new sql_data();
 		ResultSet rs = db.executeQuery(sql);
@@ -121,7 +122,6 @@ public class LoginServlet extends HttpServlet {
 			try {
 				rs.next();
 				String name = rs.getString("workerName");
-				//System.out.println(id+name);
 				HttpSession session=request.getSession();
 				session.setAttribute("identity", "worker");
 				session.setAttribute("id", id);
