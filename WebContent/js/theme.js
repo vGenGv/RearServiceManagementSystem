@@ -29,12 +29,12 @@
 	var navbarCollapse = function() {
 		if ($("#mainNav").offset().top > 100) {
 			$("#mainNav").addClass("navbar-light");
-			$("#logo_img").attr("src","img/logo_black.png");
-			$("#logo_text").css("color","black");
+			$("#logo_img").attr("src", "img/logo_black.png");
+			$("#logo_text").css("color", "black");
 		} else {
 			$("#mainNav").removeClass("navbar-light");
-			$("#logo_img").attr("src","img/logo_white.png");
-			$("#logo_text").css("color","white");
+			$("#logo_img").attr("src", "img/logo_white.png");
+			$("#logo_text").css("color", "white");
 		}
 	};
 	// Collapse now if page is not at top
