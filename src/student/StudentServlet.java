@@ -39,10 +39,10 @@ public class StudentServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String method = request.getParameter("method");
 		if(method.equals("delete")) {
-			//撤回报修
+			//撤回该条报修记录
 			delete(request,response);
 		}else if(method.equals("showHistory")) {
-			//显示报修保修单
+			//显示保修单
 			showHistory(request,response);
 		}else if(method.equals("complete")) {
 			//点击完工
@@ -57,6 +57,7 @@ public class StudentServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//解决中文乱码问题
 		response.setContentType("text/html;charset=utf-8");
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
@@ -130,8 +131,7 @@ public class StudentServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.setAttribute("repairTable", repairTable);
-		request.getRequestDispatcher("./TestHistory.jsp").forward(request, response);
-	
+		request.getRequestDispatcher("./ForStudents2.jsp").forward(request, response);	
 	}
 	
 	private void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

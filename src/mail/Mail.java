@@ -20,13 +20,10 @@ public class Mail {
     private String senderAccount = "RearServiceMS@163.com";
     //发件人账户密码
     private String senderPassword = "1234rsms";
-    //邮件内容
-    private String content = null;
     
     public Mail() {}
-    public Mail(String recipientAddress, String content) {
+    public Mail(String recipientAddress) {
     	this.recipientAddress = recipientAddress;
-    	this.content = content;
     }
      
     public void sendMail() throws Exception {
@@ -80,7 +77,7 @@ public class Mail {
         //设置邮件主题
         msg.setSubject("你有一个新的维修任务！","UTF-8");
         //设置邮件正文
-        msg.setContent(content, "text/html;charset=UTF-8");
+        msg.setContent("具体情况请登陆网站查看http://www.cdut.edu.cn/", "text/html;charset=UTF-8");
         //设置邮件的发送时间,默认立即发送
         msg.setSentDate(new Date());
         return msg;

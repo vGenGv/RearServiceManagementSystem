@@ -7,12 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-String RepairID = request.getParameter("RepairID"); 
-%>
-<form id="form1" name= "form1" method= "post" action="StudentServlet?method=complain&RepairID=<%=RepairID%>">
-	投诉：<input type="text" name="complain" id="complain"/><br><br>
-	<input type="submit" name="submit" id="submit" value="提交" />
-</form>
+	<%
+		String RepairID = request.getParameter("RepairID");
+	%>
+	<form id="form1" name="form1" method="post"
+		action="StudentServlet?method=complain&RepairID=<%=RepairID%>">
+		投诉：<input type="text" name="complain" id="complain" /><br> <br>
+		<input type="submit" name="submit" id="submit" value="提交" />
+	</form>
 </body>
 </html>

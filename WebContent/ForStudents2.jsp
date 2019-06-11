@@ -1,6 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="java.util.ArrayList"
+	import="javaBean.RepairTable"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -23,7 +24,10 @@
 }
 </style>
 </head>
-
+<%
+	ArrayList<RepairTable> repairTable = (ArrayList<RepairTable>) request.getAttribute("repairTable");
+	int lenth = repairTable.size();
+%>
 <body>
 	<!-- 导航栏 -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
@@ -107,6 +111,8 @@
 						</tr>
 					</thead>
 					<tbody>
+
+
 						<tr>
 							<td><h5>维修单号</h5></td>
 							<td><h5>报修日期</h5></td>
@@ -120,13 +126,38 @@
 							<td>2019年5月22日11点34分09秒</td>
 							<td>审核中</td>
 							<td><div class="btn-group ">
-									<button type="button" class="btn btn-secondary">投诉</button>
-									<button type="button" class="btn btn-secondary ">撤销</button>
+									<a type="button" class="btn btn-secondary">投诉</a>
+									<button type="button" class="btn btn-secondary " herf="">撤销</button>
 									<button type="button" class="btn btn-secondary">评价</button>
 								</div></td>
 						</tr>
-
-
+						<%
+							for (int i = 0; i < lenth; i++) {
+								RepairTable Repair = repairTable.get(i);
+								String id = Repair.getRepairID();
+								String date = Repair.getRepairDate();
+								String processInfo = Repair.getProcessInform();
+								String comment = Repair.getComment();
+								out.print("<tr><td>" + id + "</td>" + "<td>" + date + "</td>" + "<td>" + processInfo + "</td>");
+								if (processInfo.equals("审核通过")) {
+									out.print("<td><a href='StudentServlet?method=complete&RepairID=" + id
+											+ "'>已完工  </a><a href='TestComplain.jsp?RepairID=" + id + "'>投诉</a></td></tr>");
+								} else if (processInfo.equals("审核中")) {
+									out.print("<td><a href='StudentServlet?method=delete&RepairID=" + id
+											+ "'>撤回  </a><a href='TestComplain.jsp?RepairID=" + id + "'>投诉</a></td></tr>");
+								} else if (processInfo.equals("已完工")) {
+									if (comment == null) {
+										out.print("<td><a href='TestComment.jsp?RepairID=" + id
+												+ "'>评价  </a><a href='TestComplain.jsp?RepairID=" + id + "'>投诉</a></td></tr>");
+									} else {
+										out.print("<td><a href=''>查看评价  </a><a href='TestComplain.jsp?RepairID=" + id
+												+ "'>投诉</a></td></tr>");
+									}
+								} else {
+									out.print("<td><a href='TestComplain.jsp?RepairID=" + id + "'>投诉</a></td></tr>");
+								}
+							}
+						%>
 					</tbody>
 				</table>
 			</div>

@@ -41,13 +41,13 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String identity = request.getParameter("loginRadios");
+		String identity = request.getParameter("method");
 		System.out.print(identity);
-		if(identity.equals("student_option")) {
+		if(identity.equals("studentLogin")) {
 			studentLogin(request,response);
-		}else if(identity.equals("admin_option")) {
+		}else if(identity.equals("managerLogin")) {
 			managerLogin(request,response);
-		}else if(identity.equals("worker_option")) {
+		}else if(identity.equals("workerLogin")) {
 			workerLogin(request,response);
 		}
 	}
@@ -55,8 +55,8 @@ public class LoginServlet extends HttpServlet {
 	private void studentLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = null;
 		String pwd = null;
-		id = request.getParameter("loginInputUsername");
-		pwd = request.getParameter("loginInputPassword").trim();
+		id = request.getParameter("id");
+		pwd = request.getParameter("psw").trim();
 		String sql = "select * from students where StudentId='"+id+"' and StudentPswd='"+pwd+"'";
 		sql_data db = new sql_data();
 		ResultSet rs = db.executeQuery(sql);
